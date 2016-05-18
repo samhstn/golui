@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { generateCoordsFromGrid, gameoflife, generateGridFromCoords } from '../helpers/index.js';
+import { generateCoordsFromGrid, generateGridFromCoords, newGeneration } from '../helpers/index.js';
 
 export default class App extends Component {
   constructor() {
@@ -28,13 +28,15 @@ export default class App extends Component {
   }
 
   handleStartClick() {
-    this.setState(previousState => {
-      return {}
-    })  
+    const start = () => {
+      this.setState(previousState => {
+        return {cells: newGeneration(previousState.cells), array: generateGridFromCoords(newGeneration(previousState.cells), 9)}
+      })  
+    }
+    setInterval(start, 500);
   }
 
   render() {
-    console.log(this.state)
     return(
       <div>
         <h1>Game of Life</h1>
