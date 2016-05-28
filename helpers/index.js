@@ -7,9 +7,7 @@ const generateCoordsFromGrid = grid => {
     });
   }
   const liveCellCoordinates = grid => {
-  return grid.reduce((prev, curr) => {
-      return prev.concat(curr.filter(el => el));
-    }, []);
+  return grid.reduce((prev, curr) => prev.concat(curr.filter(el => el)), []);
   }
   return liveCellCoordinates(mapLiveCellsToCoordinates(grid))
 }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { generateCoordsFromGrid, generateGridFromCoords, newGeneration } from '../helpers/index.js';
+var size = 20
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      array: generateArr(9),
+      array: generateArr(size),
       cells: []
     }
   }
@@ -30,7 +31,7 @@ export default class App extends Component {
   handleStartClick() {
     const start = () => {
       this.setState(previousState => {
-        return {cells: newGeneration(previousState.cells), array: generateGridFromCoords(newGeneration(previousState.cells), 9)}
+        return {cells: newGeneration(previousState.cells), array: generateGridFromCoords(newGeneration(previousState.cells), size)}
       })  
     }
     setInterval(start, 500);
